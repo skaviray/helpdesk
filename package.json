@@ -1,0 +1,10 @@
+{
+  "name": "ticketing",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "dev:backend": "bun run --filter backend dev",
+    "dev:frontend": "bun run --filter frontend dev"
+  }
+}
