@@ -8,6 +8,15 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
+    disableSignUp: true,
+  },
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        defaultValue: "AGENT",
+      },
+    },
   },
   baseURL: "http://localhost:3001",
   basePath: "/api/auth",

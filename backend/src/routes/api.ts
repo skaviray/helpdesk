@@ -26,6 +26,10 @@ apiRouter.get("/health", (_req, res) => {
   });
 });
 
+apiRouter.get("/me", requireAuth, (req, res) => {
+  res.json((req as any).user);
+});
+
 apiRouter.use("/tickets", requireAuth);
 
 apiRouter.get("/tickets", (_req, res) => {
