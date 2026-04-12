@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { requireAuth } from "../middleware/requireAuth";
 
 export const apiRouter = Router();
 
@@ -24,6 +25,8 @@ apiRouter.get("/health", (_req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+apiRouter.use("/tickets", requireAuth);
 
 apiRouter.get("/tickets", (_req, res) => {
   res.json(tickets);

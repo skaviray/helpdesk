@@ -30,7 +30,7 @@ function App() {
 
   async function fetchHealth() {
     try {
-      const res = await fetch("/api/health");
+      const res = await fetch("/api/health", { credentials: "include" });
       const data = await res.json();
       setHealth(data);
       setHealthError(false);
@@ -41,7 +41,7 @@ function App() {
   }
 
   async function fetchTickets() {
-    const res = await fetch("/api/tickets");
+    const res = await fetch("/api/tickets", { credentials: "include" });
     const data = await res.json();
     setTickets(data);
   }
@@ -54,6 +54,7 @@ function App() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, description }),
+      credentials: "include",
     });
     const newTicket = await res.json();
     setTickets((prev) => [...prev, newTicket]);
@@ -62,7 +63,7 @@ function App() {
   }
 
   async function handleDelete(id: number) {
-    await fetch(`/api/tickets/${id}`, { method: "DELETE" });
+    await fetch(`/api/tickets/${id}`, { method: "DELETE", credentials: "include" });
     setTickets((prev) => prev.filter((t) => t.id !== id));
   }
 
@@ -71,6 +72,7 @@ function App() {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status }),
+      credentials: "include",
     });
     const updated = await res.json();
     setTickets((prev) => prev.map((t) => (t.id === id ? updated : t)));
