@@ -5,6 +5,11 @@
   "scripts": {
     "dev": "bun run --filter '*' dev",
     "dev:backend": "bun run --filter backend dev",
-    "dev:frontend": "bun run --filter frontend dev"
+    "dev:frontend": "bun run --filter frontend dev",
+    "test:e2e": "make test",
+    "test:e2e:ui": "make test-db-prepare && make test-e2e-ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
   }
 }

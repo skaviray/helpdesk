@@ -1,0 +1,21 @@
+services:
+  test-db:
+    image: postgres:17
+    container_name: ticketing-postgres-test
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: ticketing_test
+    ports:
+      - "5437:5432"
+    volumes:
+      - ticketing-pg-test-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d ticketing_test"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  ticketing-pg-test-data:

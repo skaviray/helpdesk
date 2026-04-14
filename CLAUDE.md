@@ -13,6 +13,16 @@ Monorepo using Bun workspaces with two packages:
 - `bun run dev:frontend` — start frontend only
 - `bun run dev:backend` — start backend only
 
+## Testing
+
+- `make test` — full E2E test run (resets test DB, migrates, seeds, runs Playwright)
+- `make test-db-prepare` — start test DB and prepare it (migrate + seed) without resetting
+- `make test-e2e` — run Playwright tests only (assumes DB is ready)
+- `make test-e2e-ui` — run Playwright in interactive UI mode
+- `make help` — show all available Makefile targets
+
+Test database runs on port 5437 (dev uses 5436). Playwright config is in `e2e/`.
+
 ## Documentation
 
 Always use the context7 MCP server to fetch up-to-date documentation for the libraries used in this project before providing answers. Key libraries:
